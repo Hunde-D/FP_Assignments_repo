@@ -39,39 +39,38 @@ using namespace std;
      // intialize seats with random values of 'x' or 'o'
      int_seats(section,ROWS);
 do{
-     new_menu:
      
      menu();
-    int menuChoice;
+    char menuChoice;
    cin>>menuChoice;
    
          switch(menuChoice)
    {
-        case 1: 
+        case '1': 
                profile();
             
                seats_available = count_seats(section);
 
                int flightClass;
                system("cls");
-               cout<<"passenger class\n";
-               cout<<"----------------\n";
-               cout<<"ROW 1 - 3  are for First Class.\n";
-               cout<<"ROW 4 - 10  are for Economy Class.\n";
+               cout<<"\t\t\tpassenger class\n";
+               cout<<"\t\t\t----------------\n";
+               cout<<"\t\t\tROW 1 - 3  are for First Class.\n";
+               cout<<"\t\t\tROW 4 - 10  are for Economy Class.\n";
                
                if(seats_available==0)
                {
-                    cout<<"sorry. this flight is full."<<endl;
-                    cout<< "Next flight leaves in 3 hours." << endl;
+                    cout<<"\t\t\tsorry. this flight is full."<<endl;
+                    cout<<"\t\t\tNext flight leaves in 3 hours." << endl;
 
                }
                else
-               {
-                    cout<<"There are "<<seats_available<<" seats available,";
-                    cout<<"Pleas select your seat"<<endl;
+               {     seatMap:
+                    cout<<"\n\t\t\tThere are "<<seats_available<<" seats available,"
+                    <<" Pleas select your seat"<<endl;
                     seat_map(section);
                }
-                    cout<<"enter the row and seat number: "<<endl;
+                    cout<<"\n\t\t\tEnter the row and seat number: ";
                     cin>>row>>seat;
                     cin.ignore(100,'\n');
 
@@ -84,22 +83,30 @@ do{
                          
                     }
                     else
-                    {
-                         cout<<"sorry. that seat is taken. pick a different seat."<<endl;
+                    {    system("cls");
+                           cout<<"\t\t\t\t\tSORRY!\n"
+                            <<"\t\t\tTHAT SEAT IS TAKEN PICKE A DIFFERENT SEAT."<<endl;
+                           cout<<"\t\t\tROW 1 - 3  are for First Class.\n";
+                           cout<<"\t\t\tROW 4 - 10  are for Economy Class.\n";
+                         goto seatMap;
                     }
                     break;
 
 
-       case 2:
+       case '2':
               return 0;
               break;
 
       default:
-          cout<<" ERROR! WRONG INPUT, TRY AGIN.";
-          goto new_menu;
+          system("cls");
+          cout <<"\n\n\t\t\t\t=== === === === === \n";
+          cout<<"\t\t\t\t||  STAR AIRLINE  ||\n";
+          cout <<"\t\t\t\t=== === === === === \n";
+          cout<<"\n\t\t\tERROR! INVALID CHARACTER, TRY AGIN.";
+          
      }
 
- cout<<"Continue? y/n.";
+     cout<<"\n\t\t\tContinue? y/n.";
      cin>>answer;
 
  } while(answer == 'y'||answer == 'Y');
@@ -120,8 +127,8 @@ void menu()
 
     cout<<"\n\n\t\t\twelcome to Star Airline online ticket service."<<endl;
     cout<<"\t\t\t----------------------------------------------\n";
-    cout<<"\t\t\t1 book a ticket\n";
-    cout<<"\t\t\t2 for Exit..";
+    cout<<"\t\t\t[1] book a ticket\n";
+    cout<<"\t\t\t[2] for Exit..";
     return;
     }
 
@@ -132,20 +139,20 @@ void menu()
     system("cls");
     cout <<"\n\n\t\t\t\t=== === === === === \n";
     cout<<"\t\t\t\t||  STAR AIRLINE  ||\n";
-    cout <<"\t\t\t\t=== === === === === \n";
+    cout <<"\t\t\t\t=== === === === === \n\n";
         
       cin.ignore();
         
-        cout<<"pleas enter your full name\n";
+        cout<<"\t\t\tpleas enter your full name: ";
         cin.getline(fullname,MAX_NAME_LENGTH);
 
-        cout<<"pleas enter your birthdate D/M/Y.\n";
+        cout<<"\t\t\tpleas enter your birthdate D/M/Y: ";
         cin.getline(birthdate,MAX_BIRTHDATE_LENGTH);
 
-        cout<<"pleas enter sex\n";
+        cout<<"\t\t\tpleas enter sex: ";
         cin.getline(sex,MAX_SEX_LENGTH);
 
-        cout<<"pleas enter your passportNumber\n";
+        cout<<"\t\t\tpleas enter your passportNumber: ";
         cin.getline(passportNumber,MAX_PASSPORTNUMBER_LENGTH);
 
       return;
@@ -172,9 +179,9 @@ void menu()
  void seat_map(char seats[ROWS][COLUMNS])
  {
     unsigned int i,j;
-    cout<<"Seat Map"<<endl<<endl;
+    cout<<"\t\t\tSeat Map\n"<<endl<<endl;
 
-    cout<<"Seat  ";
+    cout<<"\t\t\tSeat  ";
     for(j=0;j<COLUMNS;j++)
    {
         if(j==5)
@@ -188,7 +195,7 @@ void menu()
      {
         if(i==3)
           { cout<<"\n";}
-        cout<<"Row";
+        cout<<"\t\t\tRow";
         cout<<setw(1)<<i+1;
          
         cout<<"  ";
@@ -233,7 +240,7 @@ void menu()
  {
      system("cls");
      int totalPrice;
-     int tripType;
+     char tripType;
      string className;
 
      className=(rowNumber <= 3 ? "First Class" :"Economy Class") ;
@@ -242,25 +249,28 @@ void menu()
     cout <<"\n\n\t\t\t\t=== === === === === \n";
     cout<<"\t\t\t\t||  STAR AIRLINE  ||\n";
     cout <<"\t\t\t\t=== === === === === \n\n";
-    cout<<"Trip Type";
-    cout<<"-------------\n";
-    cout<<"Pleas select trip type: \n";
-    cout<<"1 for one way trip\n";
-    cout<<"2 for two way trip\n";
+    cout<<"\t\t\tTrip Type\n";
+    cout<<"\t\t\t-------------\n";
+    cout<<"\t\t\tPleas select trip type: \n";
+    cout<<"\t\t\t[1] for one way trip\n";
+    cout<<"\t\t\t[2] for two way trip\n";
+    cout<<"\t\t\tEnter... ";
+
     cin>>tripType;
-     if( tripType == 1 )
+     if( tripType == '1' )
      {
        totalPrice = classCost;
      }
      else
      {
-        if ( tripType == 2 )
+        if ( tripType == '2' )
           { 
             totalPrice = (classCost*2);
           }
         else 
         {
-         cout<<"Wrong trip inpur, try agin.";
+         system("cls"); 
+         cout<<"\t\t\tINVALID CHARACTER!, TRY AGIN";
          goto new_trip_type;
         }
      }
@@ -271,19 +281,19 @@ void menu()
     cout <<"\n\n\t\t\t\t=== === === === === \n";
     cout<<"\t\t\t\t||  STAR AIRLINE  ||\n";
     cout <<"\t\t\t\t=== === === === === \n\n";
-   cout<<date_time<<endl;
-   cout<<"Ticket of reservation\n";
-   cout<<"-----------------------------------\n";
+   cout<<"\t\t\t"<<date_time<<endl;
+   cout<<"\t\t\tTicket of reservation\n";
+   cout<<"\t\t\t------------------------------\n";
 
-   cout<<"Full Name      : "<<fullname<< endl;
-   cout<<"Birth Date     : "<<birthdate<< endl;
-   cout<<"Sex            : "<<sex<< endl;
-   cout<<"Passport Number: "<<passportNumber<< endl;
-   cout<<"Seat Number    : "<<"R"<<rowNumber<<","<<"C"<<seatNumber<<endl;
-   cout<<"class          : "<<className<<endl;
-   cout<<"TripType       : "<<tripType<<" Way Trip"<<endl;
-   cout<<"Price          : "<<totalPrice<<endl;
-   cout<<"\nHave a nive trip :) \n";
+   cout<<"\t\t\tFull Name      : "<<fullname<< endl;
+   cout<<"\t\t\tBirth Date     : "<<birthdate<< endl;
+   cout<<"\t\t\tSex            : "<<sex<< endl;
+   cout<<"\t\t\tPassport Number: "<<passportNumber<< endl;
+   cout<<"\t\t\tSeat Number    : "<<"R"<<rowNumber<<","<<"C"<<seatNumber<<endl;
+   cout<<"\t\t\tclass          : "<<className<<endl;
+   cout<<"\t\t\tTripType       : "<<tripType<<" Way Trip"<<endl;
+   cout<<"\t\t\tPrice          : "<<totalPrice<<endl;
+   cout<<"\n\t\t\tHave a nive trip :) \n";
 
     return;
  }
