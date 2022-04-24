@@ -14,4 +14,4 @@ void profile();
   void int_seats(char array[SEATS],int elements);
   void seat_map(char seats[SEATS]);
   unsigned int count_seats(char seats[SEATS]);
-  unsigned int count_economy(char seats[30]);
+  unsigned int count_first_class(char seats[30]);

@@ -39,8 +39,8 @@ void menu()
     cout<<"\t\t\tPlease reply with\n";
     cout<<"\t\t\t1. To book a ticket\n";
     cout<<"\t\t\t2. To for Exit..";
-    cout<<"\n\n\n\n\n\n\n\n\n";
-    cout<<"\t\t\t----------------------------------------------\n";
+    cout<<"\n\n\n";
+    cout<<"\t\t\t";
     return;
     }
 
@@ -86,7 +86,7 @@ void menu()
    }
     return seat_count;
  }
- unsigned int count_economy(char seats[30])
+ unsigned int count_first_class(char seats[30])
  {
     unsigned int seat_count = 0;
     for(int i=0; i<30; i++)
@@ -121,19 +121,6 @@ void menu()
         cout<<setw(2)<<j+1;
     }
     cout<<endl<<endl;
-    /*for(i=0;i<SEATS;i++)
-     {
-        if(i==3)
-          { cout<<"\n";}
-        cout<<"\t\t\tRow";
-        cout<<setw(1)<<i+1;
-
-        cout<<"  ";
-
-          cout<<setw(2)<<seats[i];
-       if ((i+1)%10 == 0){
-        cout<<endl;}
-     }*/
       for(i=0;i<10;i++)
      {
         if(i==3)
@@ -149,7 +136,7 @@ void menu()
               cout<<"  ";
            }
 
-          cout<<setw(2)<<seats[i*j];
+          cout<<setw(2)<<seats[i*10 + j];
        }
         cout<<endl;
      }

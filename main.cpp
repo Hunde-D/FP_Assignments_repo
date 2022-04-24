@@ -18,17 +18,18 @@ using namespace std;
 
    int main()
    {
-     char section[SEATS]={0};
+     char section[SEATS]={0}, response;
      int classPrice;
-     unsigned int seat_num = 0,seats_available=0;
+     unsigned int seat_num = 0,seats_available=0,first_class = 0;
 
      // intialize seats with random values of 'x' or 'o'
      int_seats(section,SEATS);
 do{
-
+startMenu:
      menu();
     char menuChoice;
    cin>>menuChoice;
+
 
          switch(menuChoice)
    {
@@ -52,16 +53,32 @@ do{
                }
                else
                {     seatMap:
-                    cout<<"\n\t\t\tThere are "<<seats_available<<" seats available,"
+                    cout<<"\n\t\t\t There are "<<seats_available<<" seats available,"
                     <<" Please select your seat"<<endl;
                     seat_map(section);
                }
 
-
-                    cout<<"there are "<<count_economy(section)<<" economy seats";
+                     first_class = count_first_class(section);
+                    cout<<"\t\t\tThere are "<<first_class<<" first class seats"<<endl;
+                    cout<<"\t\t\tThere are "<<seats_available - first_class<<" economy class seats"<<endl;
                     cout<<"\n\t\t\tEnter the row and seat number: ";
+
+                    seat_choice:
+                    response ='y';
                     cin>>seat_num;
-                    cin.ignore(100,'\n');
+                           if ((seat_num >0 && seat_num <= 30) && first_class == 0){
+                                cout<<"First class seats are already full. Would you like to have an economy class?(y/n)"<<endl;
+                            cin>>response;
+                            if(response == 'y'){
+                                cout<<"Please enter seat numbers from 31 - 100";
+                                goto seat_choice;
+                            }
+                            else{
+                                    cout<<"Have a happy day!";
+                                goto startMenu;
+                            }
+                    }
+
 
                     if(section[seat_num-1] =='o')
                     {
@@ -73,10 +90,12 @@ do{
                     }
                     else
                     {    system("cls");
+                    cout<<"-------------------------------------"<<endl;
                            cout<<"\t\t\t\t\tSORRY!\n"
                             <<"\t\t\tTHAT SEAT IS TAKEN PICKE A DIFFERENT SEAT."<<endl;
-                           cout<<"\t\t\tROW 1 - 3  are for First Class.\n";
-                           cout<<"\t\t\tROW 4 - 10  are for Economy Class.\n";
+                           cout<<"\t\t\tSeats 1-30 are for First Class.\n";
+                           cout<<"\t\t\tROW 31-100  are for Economy Class.\n";
+                    cout<<"-------------------------------------"<<endl;
                          goto seatMap;
                     }
                     break;
