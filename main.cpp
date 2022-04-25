@@ -22,7 +22,7 @@ using namespace std;
      int classPrice;
      unsigned int seat_num = 0,seats_available=0,first_class = 0;
 
-     // intialize seats with random values of 'x' or 'o'
+     // intialize seats 
      int_seats(section,SEATS);
 do{
 startMenu:
@@ -67,14 +67,14 @@ startMenu:
                     response ='y';
                     cin>>seat_num;
                            if ((seat_num >0 && seat_num <= 30) && first_class == 0){
-                                cout<<"First class seats are already full. Would you like to have an economy class?(y/n)"<<endl;
+                                cout<<"\t\t\tFirst class seats are already full. Would you like to have an economy class?(y/n): ";
                             cin>>response;
                             if(response == 'y'){
-                                cout<<"Please enter seat numbers from 31 - 100";
+                                cout<<"\n\t\t\tPlease enter seat numbers from 31 - 100: ";
                                 goto seat_choice;
                             }
                             else{
-                                    cout<<"Have a happy day!";
+                                    cout<<"\n\t\t\tHave a happy day!";
                                 goto startMenu;
                             }
                     }
@@ -90,12 +90,12 @@ startMenu:
                     }
                     else
                     {    system("cls");
-                    cout<<"-------------------------------------"<<endl;
+                    cout<<"\t\t\t**************************************"<<endl;
                            cout<<"\t\t\t\t\tSORRY!\n"
                             <<"\t\t\tTHAT SEAT IS TAKEN PICKE A DIFFERENT SEAT."<<endl;
                            cout<<"\t\t\tSeats 1-30 are for First Class.\n";
                            cout<<"\t\t\tROW 31-100  are for Economy Class.\n";
-                    cout<<"-------------------------------------"<<endl;
+                   cout<<"\t\t\t**************************************"<<endl;
                          goto seatMap;
                     }
                     break;
