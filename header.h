@@ -6,7 +6,7 @@
 #define MAX_TO_LENGTH 25
 #define SEATS 100
 
-
+// FUNCTION DECLARATION
 void menu();
 void profile();
  void printTicket(int seat_num,int classPrice );
