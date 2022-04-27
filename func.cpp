@@ -19,14 +19,15 @@ using namespace std;
 
 //calling external variables
 
-extern char birthdate[MAX_BIRTHDATE_LENGTH];
-extern char sex[MAX_SEX_LENGTH];
+ extern char birthdate[MAX_BIRTHDATE_LENGTH];
+ extern char sex[MAX_SEX_LENGTH];
  extern char passportNumber[MAX_PASSPORTNUMBER_LENGTH];
  extern char answer;
  extern char fullname[MAX_NAME_LENGTH];
 
- // FUNCTIONS
+// FUNCTION DEFINITIONS
 
+// THE MENU 
 void menu()
    {
 
@@ -43,7 +44,7 @@ void menu()
     return;
     }
 
-
+// TAKES THE USER INFORMATION
  void profile()
   {
 
@@ -69,7 +70,7 @@ void menu()
       return;
   }
 
-
+// COUNTS THE TOTAL SEATS AVAILABLE
  unsigned int count_seats(char seats[SEATS])
  {
     unsigned int seat_count = 0;
@@ -85,7 +86,7 @@ void menu()
     return seat_count;
  }
 
-
+// COUNTS FIRST CLASS SEATS THAT ARE AVAILABLE
  unsigned int count_first_class(char seats[30])
  {
     unsigned int seat_count = 0;
@@ -101,7 +102,7 @@ void menu()
     return seat_count;
  }
 
-
+// PRINTS A MAP OF THE SECTION(SEATS) IN 10X10
  void seat_map(char seats[SEATS])
  {
     unsigned int i,j;
@@ -109,7 +110,7 @@ void menu()
 
     cout<<"\t\t\tSEAT \t";
 
-    for(j=0;j<COLUMNS;j++)
+    for(j=0; j<COLUMNS; j++)
       {
         if(j==5)
          {
@@ -119,7 +120,7 @@ void menu()
       }
     cout<<endl<<endl;
 
-    for(i=0;i<10;i++)
+    for(i=0; i<10; i++)
      {
           if(i==3)
             { 
@@ -127,10 +128,10 @@ void menu()
              }
 
         cout<<"\t\t\t";
-        cout<<setw(2)<<(i)*10 + 1 <<" - "<<(i+1)*10 ;
+        cout<<setw(2)<<(i)*10 + 1 <<"-"<<(i+1)*10 ;
 
-        cout<<" \t";
-          for(j=0;j<COLUMNS;j++)
+        cout<<"\t";
+          for(j=0; j<COLUMNS; j++)
            {
                if(j==5)
                {
@@ -144,17 +145,35 @@ void menu()
     return;
    }
 
-
-  void int_seats(char array[SEATS],int elements)
+ //INITIALIZEZ THE SEATS WITH "O". "O" REPRESENTS AVAILABLE AND "X" REPRESENTS SOLD
+  void int_seats(char array[SEATS], int elements)
   {
-    for(int i=0; i< elements;i++)
+    for(int i=0; i< elements ; i++)
      {
        array[i] ='o';
      }
     return;
   }
 
+//DETERMINES CLASS PRICE
+unsigned int price(int flightSeatNumber)
+  {
+     int price;
 
+     if(flightSeatNumber <= 30)
+         {
+            price = 7500;
+         }
+     else
+         {
+            price = 5000;
+         }
+
+     return price;
+  }
+
+
+// PRINT TICKET WITH SOME NECESSARY INFORMATIONS
  void printTicket(int seat_num, int classCost )
  {
      system("cls");
@@ -211,7 +230,7 @@ void menu()
     cout<<"\t\t\tBirth Date     : "<<birthdate<< endl;
     cout<<"\t\t\tSex            : "<<sex<< endl;
     cout<<"\t\t\tPassport Number: "<<passportNumber<< endl;
-    cout<<"\t\t\tSeat Number    : "<<"SN "<<seat_num<<endl;
+    cout<<"\t\t\tSeat Number    : "<<"SN"<<seat_num<<endl;
     cout<<"\t\t\tclass          : "<<className<<endl;
     cout<<"\t\t\tTripType       : "<<tripType<<" Way Trip"<<endl;
     cout<<"\t\t\tPrice          : "<<totalPrice<<endl;
@@ -221,20 +240,5 @@ void menu()
    }
 
 
- unsigned int price(int flightSeatNumber)
-  {
-     int price;
-
-     if(flightSeatNumber <= 30)
-         {
-            price =7500;
-         }
-     else
-         {
-           price=5000;
-         }
-
-     return price;
-  }
 
 

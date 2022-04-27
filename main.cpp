@@ -13,24 +13,24 @@ using namespace std;
 
 
    int main()
-   {
+{
      char section[SEATS]={0}, response;
      int classPrice;
-     unsigned int seat_num = 0,seats_available=0,first_class = 0;
+     unsigned int seat_num = 0,seats_available=0,first_class = 0,economy_class=0;
 
      // intialize seats 
      int_seats(section,SEATS);
-do{
-startMenu:
+ do{
+     startMenu:
      menu();
-    char menuChoice;
-   cin>>menuChoice;
+     char menuChoice;
+     cin>>menuChoice;
 
 
  switch(menuChoice)
    {
         case '1':
-               profile();
+               profile();  
 
                seats_available = count_seats(section);
 
@@ -54,16 +54,18 @@ startMenu:
                    }
 
                first_class = count_first_class(section);
+               economy_class = seats_available - first_class;
                cout<<"\t\t\tThere are "<<first_class<<" first class seats"<<endl;
-               cout<<"\t\t\tThere are "<<seats_available - first_class<<" economy class seats"<<endl;
-               cout<<"\n\t\t\tEnter the row and seat number: ";
+               cout<<"\t\t\tThere are "<<economy_class<<" economy class seats"<<endl;
+               cout<<"\n\t\t\tEnter the seat number: ";
 
                seat_choice:
-               response ='y';
+               response = 'y';
                     cin>>seat_num;
+
                          if ((seat_num >0 && seat_num <= 30) && first_class == 0)
                              {
-                                cout<<"\t\t\tFirst class seats are already full. Would you like to have an economy class?(y/n): ";
+                                cout<<"\t\t\tFirst class seats are already full. Would you like to have an Economy class?(y/n): ";
                                 cin>>response;
 
                                   if(response == 'y')
@@ -78,8 +80,25 @@ startMenu:
                                   }
                              }
 
+                        if ((seat_num > 30 && seat_num <= 100) && economy_class == 0)
+                             {
+                                cout<<"\t\t\tEconomy class seats are already full. Would you like to have an First class?(y/n): ";
+                                cin>>response;
 
-              if(section[seat_num-1] =='o')
+                                  if(response == 'y' || response == 'Y')
+                                  {
+                                      cout<<"\n\t\t\tPlease enter seat numbers from 1 - 30: ";
+                                      goto seat_choice;
+                                  }
+                                 else
+                                  {
+                                    cout<<"\n\t\t\tHave a happy day!";
+                                    goto startMenu;
+                                  }
+                             }     
+
+
+              if(section[seat_num-1] == 'o')
                     {
                        section[seat_num-1] = 'x';
                        seats_available--;
@@ -113,8 +132,8 @@ startMenu:
 
      }
 
-     cout<<"\n\t\t\tContinue? y/n.";
-     cin>>answer;
+  cout<<"\n\t\t\tContinue? y/n.";
+  cin>>answer;
 
  } while(answer == 'y'||answer == 'Y');
 
