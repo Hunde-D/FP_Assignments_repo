@@ -1,4 +1,5 @@
 #include<iostream>
+//included the following library to help us use the setw method to set the width while printing something out to the console
 #include<iomanip>
 #include <ctime>
 #include "header.h"
@@ -21,6 +22,7 @@ using namespace std;
      // intialize seats 
      int_seats(section,SEATS);
  do{
+    //shows the initial user interface
      startMenu:
      menu();
      char menuChoice;
@@ -30,11 +32,13 @@ using namespace std;
  switch(menuChoice)
    {
         case '1':
+       //profile function prompts the user to insers basic personal info for later purposes
                profile();  
 
                seats_available = count_seats(section);
 
                int flightClass;
+       //system("cls") clears the entire screen for new code display
                system("cls");
                cout<<"\t\t\tpassenger class\n";
                cout<<"\t\t\t----------------\n";
@@ -62,7 +66,11 @@ using namespace std;
                seat_choice:
                response = 'y';
                     cin>>seat_num;
+/*
+-if the user enters a seat number that belongs to first class and if all first class seats are occupied, the followning
+conditional is executed.
 
+*/
                          if ((seat_num >0 && seat_num <= 30) && first_class == 0)
                              {
                                 cout<<"\t\t\tFirst class seats are already full. Would you like to have an Economy class?(y/n): ";
@@ -79,6 +87,11 @@ using namespace std;
                                     goto startMenu;
                                   }
                              }
+       /*
+-if the user enters a seat number that belongs to economic class and if all economic class seats are occupied, the followning
+conditional is executed.
+
+*/
 
                         if ((seat_num > 30 && seat_num <= 100) && economy_class == 0)
                              {
