@@ -42,5 +42,3 @@ For instance, if the user enters 5 while the first class is already full.
 - Iman Mohammedsaeed
 - Senait Mengesha
 
-Please make sure to update tests as appropriate.
-
