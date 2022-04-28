@@ -18,7 +18,7 @@ using namespace std;
      char section[SEATS]={0}, response;
      int classPrice;
      unsigned int seat_num = 0,seats_available=0,first_class = 0,economy_class=0;
-
+      bool valid = true;
      // intialize seats 
      int_seats(section,SEATS);
  do{
@@ -65,7 +65,19 @@ using namespace std;
 
                seat_choice:
                response = 'y';
-                    cin>>seat_num;
+                    
+               do{
+        cin>>seat_num;
+        if(cin.fail() || cin.get() != '\n')
+        {
+            cout<<"\t\t\tError.  The value you entered was not an integer."<<endl;
+            cout<<"\t\t\tPlease enter an integer:  ";
+            cin.clear();
+            cin.ignore(256,'\n');
+            valid = false;
+        }
+        else valid = true;
+    }while(valid == false);
 /*
 -if the user enters a seat number that belongs to first class and if all first class seats are occupied, the followning
 conditional is executed.
