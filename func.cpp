@@ -17,8 +17,10 @@ using namespace std;
 #define SEATS 100
 #define COLUMNS 10
 
-//calling external variables
-
+/*calling external variables
+- the extern keyword helps the cpp compiler to understand that the variable
+called upon this is from an external c++ module.
+*/
  extern char birthdate[MAX_BIRTHDATE_LENGTH];
  extern char sex[MAX_SEX_LENGTH];
  extern char passportNumber[MAX_PASSPORTNUMBER_LENGTH];
