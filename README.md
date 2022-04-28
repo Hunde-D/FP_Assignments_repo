@@ -11,7 +11,19 @@ contains all function bodies. We used the extern keyword to fetch variables from
 header.h
 header file containing function prototypes.
 ```
+### Functions
+```
+void menu();
+void profile();
+ void printTicket(int seat_num,int classPrice );
+ unsigned int price(int flightClassRow);
+  void int_seats(char array[SEATS],int elements);
+  void seat_map(char seats[SEATS]);
+  unsigned int count_seats(char seats[SEATS]);
+  unsigned int count_first_class(char seats[30]);
 
+
+```
 ## Usage
 
 ```
